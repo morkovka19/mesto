@@ -7,3 +7,11 @@
     align-items: center;
     gap: 30px;
 }
+
+@media screen and (max-width: 768px){
+    .profile__block-author{
+        flex-direction: column;
+        gap: 25px;
+    }
+    
+}

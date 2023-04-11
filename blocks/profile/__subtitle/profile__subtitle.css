@@ -6,3 +6,12 @@
     font-style: normal;
     color: #ffffff;
 }
+
+@media screen and (max-width: 768px){
+    .profile__subtitle{
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+    }
+    
+}

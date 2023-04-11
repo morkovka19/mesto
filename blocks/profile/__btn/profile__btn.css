@@ -6,9 +6,16 @@
     width: calc(150/880*100%);
     min-height: 50px;
     box-sizing: border-box;
-    transition: border linear .2s;
+    transition: opacity linear .3s;
 }
 
 .profile__btn:hover {
-    border: 3px solid #ffffff;
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 768px){
+    .profile__btn{
+        width: 100%;
+    }
+    
 }
