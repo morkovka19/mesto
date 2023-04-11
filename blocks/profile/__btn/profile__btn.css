@@ -1,0 +1,14 @@
+.profile__btn{
+    background-color: #000000;
+    border: 2px solid #ffffff;
+    border-radius: 2px;
+    color: #ffffff;
+    width: calc(150/880*100%);
+    min-height: 50px;
+    box-sizing: border-box;
+    transition: border linear .2s;
+}
+
+.profile__btn:hover {
+    border: 3px solid #ffffff;
+}
