@@ -7,6 +7,19 @@
     <title>Mesto</title>
 </head>
 <body class="root">
+    <section class="popup">
+        <div class="popup__container">
+            <img class="popup__icon" src="images/icon/close-icon-min.svg" alt="иконка крестик">
+            <form class="popup__form">
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <fieldset class="popup__inputs-container">
+                    <input maxlength="100" minlength="3" class="popup__input" type="text" required placeholder="Жак-Ив Кусто" id="name" name="name">
+                    <input maxlength="100" minlength="3" class="popup__input" type="text" required placeholder="Исследователь океана" id="info" name="info">
+                </fieldset>
+                <button class="popup__submit" type="submit" value="Сохранить"><p class="popup__submit-text">Сохранить</p></button>
+            </form>
+        </div>
+    </section>
     <header class="header root__container-center">
         <img class="header__logo" src="images/icon/Vector-min.svg" alt="логотип место">
     </header>   
@@ -71,5 +84,6 @@
     <footer class="footer root__container-center">
         <p class="footer__text">&copy; 2020 Mesto Russia</p>
     </footer>
+    <script src="index.js"></script>
 </body>
 </html>

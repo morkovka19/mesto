@@ -1,0 +1,17 @@
+.popup__icon{
+    align-self: flex-end;
+    max-width: 32px;
+    transform: translate(100%, -20%);
+    transition: opacity linear .3s;
+}
+
+.popup__icon:hover{
+    opacity: .6;
+}
+
+@media screen and (max-width: 636px){
+    .popup__icon{
+        transform: translate(0, -50%);
+        max-width: 20px;
+    }
+}
