@@ -1,7 +1,6 @@
 .header{
     width: calc(880/1280*100%);
     min-height: 74px;
-    /*position: relative;*/
     padding-top: 50px;
     display: flex;
     justify-content: flex-start;
@@ -21,5 +20,4 @@
         padding-top: 28px;
         min-height: 56px;
     }
-    
 }

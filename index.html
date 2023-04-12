@@ -13,8 +13,8 @@
             <form class="popup__form">
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <fieldset class="popup__inputs-container">
-                    <input maxlength="100" minlength="3" class="popup__input" type="text" required placeholder="Жак-Ив Кусто" id="name" name="name">
-                    <input maxlength="100" minlength="3" class="popup__input" type="text" required placeholder="Исследователь океана" id="info" name="info">
+                    <input maxlength="20" minlength="3" class="popup__input popup__input_name_name" type="text" required placeholder="Имя" id="name" name="name" value="Жак-Ив Кусто">
+                    <input maxlength="100" minlength="3" class="popup__input popup__input_name_info" type="text" required placeholder="О себе" id="info" name="info" value="Исследователь океана">
                 </fieldset>
                 <button class="popup__submit" type="submit" value="Сохранить"><p class="popup__submit-text">Сохранить</p></button>
             </form>
@@ -28,7 +28,10 @@
             <div class="profile__block-author">
                 <img class="profile__avatar" src="images/jak-iv-kusto.jpg" alt="фото автора">
                 <div class="profile__block-info">
-                    <h1 class="profile__title">Жак-Ив Кусто<img class="profile__icon" src="images/icon/Edit-Button-min.svg"></h1>
+                    <div class="profile__block-title">
+                        <h1 class="profile__title">Жак-Ив Кусто</h1>
+                        <img class="profile__icon" src="images/icon/Edit-Button-min.svg" alt="иконка для редактирования">
+                    </div>
                     <p class="profile__subtitle">Исследователь океана</p>
                 </div>
             </div>
@@ -40,42 +43,42 @@
                     <img class="elements__item-img" src="images/karachaevsk.jpg" alt="фото Карачаевск">
                     <div class="elements__item-block">
                         <p class="elements__item-title">Карачаевск</p>
-                        <img class="elements__item-like" src="images/icon/like-no-active-min.svg">
+                        <img class="elements__item-like elements__item-like_active" src="images/icon/like-no-active-min.svg" alt="лайк">
                     </div>
                 </li>
                 <li class="elements__item">
                     <img class="elements__item-img" src="images/elbrus.jpg" alt="фото Эльбрус">
                     <div class="elements__item-block">
                         <p class="elements__item-title">Гора Эльбрус</p>
-                        <img class="elements__item-like" src="images/icon/like-no-active-min.svg">
+                        <img class="elements__item-like" src="images/icon/like-no-active-min.svg" alt="лайк">
                     </div>
                 </li>
                 <li class="elements__item">
                     <img class="elements__item-img" src="images/dombay.jpg" alt="фото Домбай">
                     <div class="elements__item-block">
                         <p class="elements__item-title">Домбай</p>
-                        <img class="elements__item-like" src="images/icon/like-no-active-min.svg">
+                        <img class="elements__item-like" src="images/icon/like-no-active-min.svg" alt="лайк">
                     </div>
                 </li>
                 <li class="elements__item">
                     <img class="elements__item-img" src="images/elbrus.jpg" alt="фото Эльбрус">
                     <div class="elements__item-block">
                         <p class="elements__item-title">Гора Эльбрус</p>
-                        <img class="elements__item-like" src="images/icon/like-no-active-min.svg">
+                        <img class="elements__item-like" src="images/icon/like-no-active-min.svg" alt="лайк">
                     </div>
                 </li>
                 <li class="elements__item">
                     <img class="elements__item-img" src="images/dombay.jpg" alt="фото Домбай">
                     <div class="elements__item-block">
                         <p class="elements__item-title">Домбай</p>
-                        <img class="elements__item-like" src="images/icon/like-no-active-min.svg">
+                        <img class="elements__item-like" src="images/icon/like-no-active-min.svg" alt="лайк">
                     </div>
                 </li>
                 <li class="elements__item">
                     <img class="elements__item-img" src="images/karachaevsk.jpg" alt="фото Карачаевск">
                     <div class="elements__item-block">
                         <p class="elements__item-title">Карачаевo-Черкесия</p>
-                        <img class="elements__item-like" src="images/icon/like-no-active-min.svg">
+                        <img class="elements__item-like" src="images/icon/like-no-active-min.svg" alt="лайк">
                     </div>
                 </li>
             </ul>
