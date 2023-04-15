@@ -8,9 +8,11 @@
     transition: opacity linear .3s;
 }
 
-.profile__btn-redaction{
-    min-width: 18px;
-    min-height: 18px;
+@media screen and (max-width: 636px){
+    .profile__btn-redaction{
+        min-width: 18px;
+        min-height: 18px;
+    }
 }    
 
 
