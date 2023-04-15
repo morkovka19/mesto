@@ -1,9 +1,5 @@
 .elements__item-like{
     max-width: 22px;
     max-height: 22px;
-    transition: opacity linear .3;
 }
 
-.elements__item-like:hover{
-    opacity: 0.6;
-}

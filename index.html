@@ -7,19 +7,6 @@
     <title>Mesto</title>
 </head>
 <body class="root">
-    <section class="popup">
-        <div class="popup__container">
-            <img class="popup__icon" src="images/icon/close-icon-min.svg" alt="иконка крестик">
-            <form class="popup__form">
-                <h2 class="popup__title">Редактировать профиль</h2>
-                <fieldset class="popup__inputs-container">
-                    <input maxlength="20" minlength="3" class="popup__input popup__input_name_name" type="text" required placeholder="Имя" id="name" name="name" value="Жак-Ив Кусто">
-                    <input maxlength="100" minlength="3" class="popup__input popup__input_name_info" type="text" required placeholder="О себе" id="info" name="info" value="Исследователь океана">
-                </fieldset>
-                <button class="popup__submit" type="submit" value="Сохранить"><p class="popup__submit-text">Сохранить</p></button>
-            </form>
-        </div>
-    </section>
     <header class="header root__container-center">
         <img class="header__logo" src="images/icon/Vector-min.svg" alt="логотип место">
     </header>   
@@ -30,55 +17,55 @@
                 <div class="profile__block-info">
                     <div class="profile__block-title">
                         <h1 class="profile__title">Жак-Ив Кусто</h1>
-                        <img class="profile__icon" src="images/icon/Edit-Button-min.svg" alt="иконка для редактирования">
+                        <button type="button" class="profile__btn-redaction"><img class="profile__icon" src="images/icon/Edit-Button-min.svg" alt="иконка для редактирования"></button>
                     </div>
                     <p class="profile__subtitle">Исследователь океана</p>
                 </div>
             </div>
-            <button class="profile__btn"><img class="profile__btn-icon" alt="плюс на кнопке добавить" src="images/icon/plus.svg"></button>
+            <button class="profile__btn" type="submit"><img class="profile__btn-icon" alt="плюс на кнопке добавить" src="images/icon/plus.svg"></button>
         </section>
         <section class="elements root__container-center">
             <ul class="elements__group">
                 <li class="elements__item">
                     <img class="elements__item-img" src="images/karachaevsk.jpg" alt="фото Карачаевск">
                     <div class="elements__item-block">
-                        <p class="elements__item-title">Карачаевск</p>
-                        <img class="elements__item-like elements__item-like_active" src="images/icon/like-no-active-min.svg" alt="лайк">
+                        <h2 class="elements__item-title">Карачаевск</h2>
+                        <button type="submit" class="elements__btn-like"><img class="elements__item-like" src="images/icon/like-no-active-min.svg" alt="лайк"></button>
                     </div>
                 </li>
                 <li class="elements__item">
                     <img class="elements__item-img" src="images/elbrus.jpg" alt="фото Эльбрус">
                     <div class="elements__item-block">
-                        <p class="elements__item-title">Гора Эльбрус</p>
-                        <img class="elements__item-like" src="images/icon/like-no-active-min.svg" alt="лайк">
+                        <h2 class="elements__item-title">Гора Эльбрус</h2>
+                        <button type="submit" class="elements__btn-like"><img class="elements__item-like" src="images/icon/like-no-active-min.svg" alt="лайк"></button>
                     </div>
                 </li>
                 <li class="elements__item">
                     <img class="elements__item-img" src="images/dombay.jpg" alt="фото Домбай">
                     <div class="elements__item-block">
-                        <p class="elements__item-title">Домбай</p>
-                        <img class="elements__item-like" src="images/icon/like-no-active-min.svg" alt="лайк">
+                        <h2 class="elements__item-title">Домбай</h2>
+                        <button type="submit" class="elements__btn-like"><img class="elements__item-like" src="images/icon/like-no-active-min.svg" alt="лайк"></button>
                     </div>
                 </li>
                 <li class="elements__item">
                     <img class="elements__item-img" src="images/elbrus.jpg" alt="фото Эльбрус">
                     <div class="elements__item-block">
-                        <p class="elements__item-title">Гора Эльбрус</p>
-                        <img class="elements__item-like" src="images/icon/like-no-active-min.svg" alt="лайк">
+                        <h2 class="elements__item-title">Гора Эльбрус</h2>
+                        <button type="submit" class="elements__btn-like"><img class="elements__item-like" src="images/icon/like-no-active-min.svg" alt="лайк"></button>
                     </div>
                 </li>
                 <li class="elements__item">
                     <img class="elements__item-img" src="images/dombay.jpg" alt="фото Домбай">
                     <div class="elements__item-block">
-                        <p class="elements__item-title">Домбай</p>
-                        <img class="elements__item-like" src="images/icon/like-no-active-min.svg" alt="лайк">
+                        <h2 class="elements__item-title">Домбай</h2>
+                        <button type="submit" class="elements__btn-like"><img class="elements__item-like" src="images/icon/like-no-active-min.svg" alt="лайк"></button>
                     </div>
                 </li>
                 <li class="elements__item">
                     <img class="elements__item-img" src="images/karachaevsk.jpg" alt="фото Карачаевск">
                     <div class="elements__item-block">
-                        <p class="elements__item-title">Карачаевo-Черкесия</p>
-                        <img class="elements__item-like" src="images/icon/like-no-active-min.svg" alt="лайк">
+                        <h2 class="elements__item-title">Карачаевo-Черкесия</h2>
+                        <button type="submit" class="elements__btn-like"><img class="elements__item-like" src="images/icon/like-no-active-min.svg" alt="лайк"></button>
                     </div>
                 </li>
             </ul>
@@ -87,6 +74,19 @@
     <footer class="footer root__container-center">
         <p class="footer__text">&copy; 2020 Mesto Russia</p>
     </footer>
-    <script src="index.js"></script>
+    <section class="popup">
+        <div class="popup__container">
+            <button class="popup__btn" type="reset"><img class="popup__icon" src="images/icon/close-icon-min.svg" alt="иконка крестик"></button>
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <form class="popup__form" name="form">
+                <fieldset class="popup__inputs-container">
+                    <input class="popup__input popup__input_name_name" type="text" required placeholder="Имя" id="name" name="name" value="Жак-Ив Кусто">
+                    <input class="popup__input popup__input_name_info" type="text" required placeholder="О себе" id="info" name="info" value="Исследователь океана">
+                </fieldset>
+                <button class="popup__submit" type="submit" value="Сохранить">Сохранить</button>
+            </form>
+        </div>
+    </section>
+    <script src="scripts/index.js" defer></script>
 </body>
 </html>

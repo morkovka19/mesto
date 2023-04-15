@@ -3,15 +3,18 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    margin-top: 54px;
+    gap: 26px;
+    margin-top: 45px;
     align-items: flex-start;
     width: calc(358/394*100%);
     border: none;
+    position: relative;
+    box-sizing: border-box;
 }
     
 @media screen and (max-width: 636px){
     .popup__inputs-container{
-        margin-top: 75px;
+        margin-top: 73px;
+        gap: 30px;
     }
 }

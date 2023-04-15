@@ -5,7 +5,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    border-bottom: rgba(84, 84, 84, 1) 1px solid;
+    border-bottom: rgba(84, 84, 84, .7) 1px solid;
 }
 
 @media screen and (max-width: 1024px){
