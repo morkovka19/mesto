@@ -10,8 +10,8 @@ let inputInfo = popUp.querySelector('.popup__input_name_info');
 let formPopUp = popUp.querySelector('.popup__form');
 
 function openPopUp(){
-    inputName =  title.textContent;
-    inputInfo =  subtitle.textContent;
+    inputName.value =  title.textContent;
+    inputInfo.value =  subtitle.textContent;
     popUp.classList.add('popup_opened');
 }
 
@@ -21,10 +21,8 @@ function closePopUp(){
 
 function savePopUp(evt){
     evt.preventDefault();
-    let inputNameBuff = popUp.querySelector('.popup__input_name_name');
-    let inputInfoBuff = popUp.querySelector('.popup__input_name_info');
-    title.textContent = inputNameBuff.value;
-    subtitle.textContent = inputInfoBuff.value;
+    title.textContent = inputName.value;
+    subtitle.textContent = inputInfo.value;
     closePopUp();
 }
 
