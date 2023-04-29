@@ -6,10 +6,13 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    display: none;
+    opacity: 0;
+    visibility: hidden;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
     flex-direction: column;
     margin: 0 auto;
+    display: flex;
+    transition: visibility linear 0s, opacity linear .5s;
 }

@@ -94,11 +94,11 @@ function closePopUpNewCard(){
 //открыть попап карточки
 function openPopUpCard(element){
     element.addEventListener('click', function(){
-        console.log(element);
+        popUpCard.classList.add('popup_opened');
         popUpCard.querySelector('.popup__img').src = element.src;
         const figcaption = element.parentElement.querySelector('.elements__item-title').textContent;
         popUpCard.querySelector('.popup__figcaption').textContent = figcaption;
-        popUpCard.classList.add('popup_opened');
+
     })
 }
 
