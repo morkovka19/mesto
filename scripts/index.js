@@ -127,17 +127,19 @@ function removeCard(element){
 function createNewCard(evt){
     evt.preventDefault();
     const cardElement = cardTemplate.querySelector('.elements__item').cloneNode(true);
-    let cardElementName = document.querySelector('#name-img');
-    let cardElementImg = document.querySelector('#href');
-    cardElement.querySelector('.elements__item-title').textContent = cardElementName;
-    cardElement.src = cardElementImg;
+    let cardElementName = popUpNewCard.querySelector('#name-img');
+    let cardElementImg = popUpNewCard.querySelector('#href');
+    cardElement.querySelector('.elements__item-title').textContent = cardElementName.value;
+    cardElement.src = cardElementImg.value;
     groupCards.prepend(cardElement);
     likeButtons.unshift(cardElement.querySelector('.elements__btn-like'));
     addLike(cardElement.querySelector('.elements__btn-like'));
     trashButtons.unshift(cardElement.querySelector('.elements__trash'));
     removeCard(cardElement.querySelector('.elements__trash'));
     openPopUpCard(cardElement.querySelector('.elements__item-img'));
-    closePopUpNewCard();
+    closePopUpNewCard(); 
+    popUpNewCard.querySelector('#name-img').value = '';
+    popUpNewCard.querySelector('#href').value = '';
 }
 
 
