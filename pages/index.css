@@ -41,4 +41,9 @@
 @import url(../blocks/profile/__btn-redaction/profile__btn-redaction.css);
 @import url(../blocks/elements/__btn-like/elements__btn-like.css);
 @import url(../blocks/elements/__btn-like/_active/elements__btn-like_active.css);
-
+@import url(../blocks/elements/__trash/elements__trash.css);
+@import url(../blocks/popup/_opacity/popup_opacity.css);
+@import url(../blocks/popup/__img/popup__img.css);
+@import url(../blocks/popup/__figcaption/popup__figcaption.css);
+@import url(../blocks/popup/__card-container/popup__card-container.css);
+@import url(../blocks/popup/__btn/_position/popup__btn_position_card.css)

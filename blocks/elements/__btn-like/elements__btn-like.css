@@ -9,6 +9,7 @@
     box-sizing: border-box;
     background-image: url('../../../images/icon/like-no-active-min.svg');
     background-repeat: no-repeat;
+    transition: opacity linear .3s;
 }
 
 .elements__btn-like:hover{
