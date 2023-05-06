@@ -74,7 +74,7 @@ function createCard(name, src) {
     cardElement.querySelector('.elements__item-img').src = src;
     cardElement.querySelector('.elements__item-title').textContent = name;
     cardElement.querySelector('.elements__item-img').alt = name;
-    cardElement.querySelector('.elements__item-img').addEventListener('click', function () { openPopUpCard(cardElement.querySelector('.elements__item-img').src, cardElement.querySelector('.elements__item-img').alt)});
+    cardElement.querySelector('.elements__item-img').addEventListener('click', function () { openPopUpCard(src, name)});
     cardElement.querySelector('.elements__btn-like').addEventListener('click', function () { addLike(cardElement.querySelector('.elements__btn-like'))});
     cardElement.querySelector('.elements__trash').addEventListener('click', function () { removeCard(cardElement) })
     return cardElement;
