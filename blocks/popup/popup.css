@@ -14,5 +14,5 @@
     flex-direction: column;
     margin: 0 auto;
     display: flex;
-    transition: visibility linear 0s, opacity linear .5s;
+    transition: visibility linear .2s, opacity linear .2s;
 }
