@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="pages/index.css">
     <title>Mesto</title>
 </head>
+
 <body class="root">
     <header class="header root__container-center">
         <img class="header__logo" src="images/icon/Vector-min.svg" alt="логотип место">
-    </header>   
+    </header>
     <main class="main">
         <section class="profile root__container-center">
             <div class="profile__block-author">
@@ -17,57 +19,17 @@
                 <div class="profile__block-info">
                     <div class="profile__block-title">
                         <h1 class="profile__title">Жак-Ив Кусто</h1>
-                        <button type="button" class="profile__btn-redaction"><img class="profile__icon" src="images/icon/Edit-Button-min.svg" alt="иконка для редактирования"></button>
+                        <button type="button" class="profile__btn-redaction"><img class="profile__icon"
+                                src="images/icon/Edit-Button-min.svg" alt="иконка для редактирования"></button>
                     </div>
                     <p class="profile__subtitle">Исследователь океана</p>
                 </div>
             </div>
-            <button class="profile__btn" type="button"><img class="profile__btn-icon" alt="плюс на кнопке добавить" src="images/icon/plus.svg"></button>
+            <button class="profile__btn" type="button"><img class="profile__btn-icon" alt="плюс на кнопке добавить"
+                    src="images/icon/plus.svg"></button>
         </section>
         <section class="elements root__container-center">
             <ul class="elements__group">
-                <!--<li class="elements__item">
-                    <img class="elements__item-img" src="images/karachaevsk.jpg" alt="фото Карачаевск">
-                    <div class="elements__item-block">
-                        <h2 class="elements__item-title">Карачаевск</h2>
-                        <button type="button" class="elements__btn-like"><img class="elements__item-like" src="images/icon/like-no-active-min.svg" alt="лайк"></button>
-                    </div>
-                </li>
-                <li class="elements__item">
-                    <img class="elements__item-img" src="images/elbrus.jpg" alt="фото Эльбрус">
-                    <div class="elements__item-block">
-                        <h2 class="elements__item-title">Гора Эльбрус</h2>
-                        <button type="submit" class="elements__btn-like"><img class="elements__item-like" src="images/icon/like-no-active-min.svg" alt="лайк"></button>
-                    </div>
-                </li>
-                <li class="elements__item">
-                    <img class="elements__item-img" src="images/dombay.jpg" alt="фото Домбай">
-                    <div class="elements__item-block">
-                        <h2 class="elements__item-title">Домбай</h2>
-                        <button type="submit" class="elements__btn-like"><img class="elements__item-like" src="images/icon/like-no-active-min.svg" alt="лайк"></button>
-                    </div>
-                </li>
-                <li class="elements__item">
-                    <img class="elements__item-img" src="images/elbrus.jpg" alt="фото Эльбрус">
-                    <div class="elements__item-block">
-                        <h2 class="elements__item-title">Гора Эльбрус</h2>
-                        <button type="submit" class="elements__btn-like"><img class="elements__item-like" src="images/icon/like-no-active-min.svg" alt="лайк"></button>
-                    </div>
-                </li>
-                <li class="elements__item">
-                    <img class="elements__item-img" src="images/dombay.jpg" alt="фото Домбай">
-                    <div class="elements__item-block">
-                        <h2 class="elements__item-title">Домбай</h2>
-                        <button type="submit" class="elements__btn-like"><img class="elements__item-like" src="images/icon/like-no-active-min.svg" alt="лайк"></button>
-                    </div>
-                </li>
-                <li class="elements__item">
-                    <img class="elements__item-img" src="images/karachaevsk.jpg" alt="фото Карачаевск">
-                    <div class="elements__item-block">
-                        <h2 class="elements__item-title">Карачаевo-Черкесия</h2>
-                        <button type="submit" class="elements__btn-like"><img class="elements__item-like" src="images/icon/like-no-active-min.svg" alt="лайк"></button>
-                    </div>
-                </li>-->
             </ul>
         </section>
     </main>
@@ -76,12 +38,15 @@
     </footer>
     <section class="popup" id="popup-edit">
         <div class="popup__container">
-            <button class="popup__btn" type="reset"><img class="popup__icon" src="images/icon/close-icon-min.svg" alt="иконка крестик"></button>
+            <button class="popup__btn" type="reset"><img class="popup__icon" src="images/icon/close-icon-min.svg"
+                    alt="иконка крестик"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
             <form class="popup__form" name="form">
                 <fieldset class="popup__inputs-container">
-                    <input class="popup__input popup__input_name_name" type="text" required placeholder="Имя" id="name" name="name" value="Жак-Ив Кусто">
-                    <input class="popup__input popup__input_name_info" type="text" required placeholder="О себе" id="info" name="info" value="Исследователь океана">
+                    <input class="popup__input popup__input_name_name" type="text" required placeholder="Имя" id="name"
+                        name="name" value="Жак-Ив Кусто">
+                    <input class="popup__input popup__input_name_info" type="text" required placeholder="О себе"
+                        id="info" name="info" value="Исследователь океана">
                 </fieldset>
                 <button class="popup__submit" type="submit" value="Сохранить">Сохранить</button>
             </form>
@@ -89,12 +54,15 @@
     </section>
     <section class="popup" id="popup-new-card">
         <div class="popup__container">
-            <button class="popup__btn" type="reset"><img class="popup__icon" src="images/icon/close-icon-min.svg" alt="иконка крестик"></button>
+            <button class="popup__btn" type="reset"><img class="popup__icon" src="images/icon/close-icon-min.svg"
+                    alt="иконка крестик"></button>
             <h2 class="popup__title">Новое место</h2>
             <form class="popup__form" name="form">
                 <fieldset class="popup__inputs-container">
-                    <input class="popup__input popup__input_name_name" type="text" required placeholder="Название" id="name-img" name="name-img">
-                    <input class="popup__input popup__input_name_info" type="text" required placeholder="Ссылка на картинку" id="href" name="info">
+                    <input class="popup__input popup__input_name_name" type="text" required placeholder="Название"
+                        id="name-img" name="name-img">
+                    <input class="popup__input popup__input_name_info" type="text" required
+                        placeholder="Ссылка на картинку" id="href" name="info">
                 </fieldset>
                 <button class="popup__submit" type="submit" value="Сохранить">Создать</button>
             </form>
@@ -102,15 +70,16 @@
     </section>
     <section class="popup popup_opacity" id="popup-card">
         <div class="popup__card-container">
-            <button class="popup__btn popup__btn_position_card" type="reset"><img class="popup__icon" src="images/icon/close-icon-min.svg" alt="иконка крестик"></button>
+            <button class="popup__btn popup__btn_position_card" type="reset"><img class="popup__icon"
+                    src="images/icon/close-icon-min.svg" alt="иконка крестик"></button>
             <img class="popup__img" src="#" alt="фото">
             <p class="popup__figcaption"></p>
         </div>
     </section>
     <template id="card">
         <li class="elements__item">
-           <img class="elements__item-img" src="#" alt="фото">
-           <button class="elements__trash" tupe="submit"></button>
+            <img class="elements__item-img" src="#" alt="фото">
+            <button class="elements__trash" tupe="submit"></button>
             <div class="elements__item-block">
                 <h2 class="elements__item-title"></h2>
                 <button type="button" class="elements__btn-like"></button>
@@ -118,5 +87,7 @@
         </li>
     </template>
     <script src="scripts/index.js" defer></script>
+    <script src="scripts/validation.js" defer></script>
 </body>
+
 </html>
