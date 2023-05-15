@@ -8,8 +8,8 @@
     <title>Mesto</title>
 </head>
 
-<body class="root">
-    <header class="header root__container-center">
+<body class="root">'
+    <header class="header root__container-center">'
         <img class="header__logo" src="images/icon/Vector-min.svg" alt="логотип место">
     </header>
     <main class="main">
@@ -44,9 +44,11 @@
             <form class="popup__form" name="form">
                 <fieldset class="popup__inputs-container">
                     <input class="popup__input popup__input_name_name" type="text" required placeholder="Имя" id="name"
-                        name="name" value="Жак-Ив Кусто">
+                        name="name" value="Жак-Ив Кусто" maxlength="40" minlength="2">
+                    <span id="name-error" class="error error_name_name"></span>
                     <input class="popup__input popup__input_name_info" type="text" required placeholder="О себе"
-                        id="info" name="info" value="Исследователь океана">
+                        id="info" name="info" value="Исследователь океана" maxlength="200" minlength="2">
+                    <span id="info-error" class="error error_name_info"></span>
                 </fieldset>
                 <button class="popup__submit" type="submit" value="Сохранить">Сохранить</button>
             </form>
@@ -59,12 +61,14 @@
             <h2 class="popup__title">Новое место</h2>
             <form class="popup__form" name="form">
                 <fieldset class="popup__inputs-container">
-                    <input class="popup__input popup__input_name_name" type="text" required placeholder="Название"
+                    <input class="popup__input popup__input_name_name" maxlength="30" minlength="2" type="text" required placeholder="Название"
                         id="name-img" name="name-img">
-                    <input class="popup__input popup__input_name_info" type="text" required
-                        placeholder="Ссылка на картинку" id="href" name="info">
+                        <span id="name-img-error" class="error error_name_name"></span>
+                    <input class="popup__input popup__input_name_info" type="url" required
+                        placeholder="Ссылка на картинку" id="href" name="info-img">
+                    <span id="info-img-error" class="error error_name_info"></span>
                 </fieldset>
-                <button class="popup__submit" type="submit" value="Сохранить">Создать</button>
+                <button class="popup__submit popup__submit_inactive" type="submit" value="Сохранить">Создать</button>
             </form>
         </div>
     </section>

@@ -1,4 +1,4 @@
-.profile__btn{
+.profile__btn {
     background-color: #000000;
     border: 2px solid #ffffff;
     border-radius: 2px;
@@ -7,6 +7,7 @@
     min-height: 50px;
     box-sizing: border-box;
     transition: opacity linear .3s;
+    outline: none;
 }
 
 .profile__btn:hover {
@@ -14,8 +15,8 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 768px){
-    .profile__btn{
+@media screen and (max-width: 768px) {
+    .profile__btn {
         width: 100%;
     }
 }
