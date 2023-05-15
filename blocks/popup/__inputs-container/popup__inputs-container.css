@@ -3,7 +3,6 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 32px;
     margin-top: 45px;
     align-items: flex-start;
     width: calc(358/394*100%);
@@ -15,6 +14,5 @@
 @media screen and (max-width: 636px){
     .popup__inputs-container{
         margin-top: 73px;
-        gap: 30px;
     }
 }

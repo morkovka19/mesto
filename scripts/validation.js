@@ -4,10 +4,10 @@ function showError(inputElement, errorElement, config){
     errorElement.textContent = inputElement.validationMessage;
 }
 
-//скртие ошибки
+//скрsтие ошибки
 function hideError(inputElement, errorElement, config){
     inputElement.classList.remove(config.inputErrorClass);
-    errorElement.textContent = inputElement.validationMessage;
+    errorElement.textContent = '';
 }
 
 //кнопка не активна 

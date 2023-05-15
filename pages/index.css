@@ -48,7 +48,5 @@
 @import url(../blocks/popup/__card-container/popup__card-container.css);
 @import url(../blocks/popup/__btn/_position/popup__btn_position_card.css);
 @import url(../blocks/error/error.css);
-@import url(../blocks/error/_name/error_name_name.css);
-@import url(../blocks/error/_name/error_name_info.css);
 @import url(../blocks/popup/__submit/_inactive/popup__submit_inactive.css);
 @import url(../blocks/popup/__input/_error/popup__input_error.css);

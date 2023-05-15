@@ -7,6 +7,7 @@ const popupImage = document.querySelector("#popup-card")
 const buttonClosePopupProfile = popUpEdit.querySelector(".popup__btn")
 const buttonClosePopupAddCard = popUpNewCard.querySelector(".popup__btn")
 const buttonClosePopupImage = popupImage.querySelector(".popup__btn")
+const buttonSaveNewCard = popUpNewCard.querySelector('.popup__submit');
 
 //кнопки на основной странице 
 const editButton = document.querySelector(".profile__icon")
@@ -33,32 +34,6 @@ const formEdit = popUpEdit.querySelector(".popup__form")
 const cardElementName = popUpNewCard.querySelector("#name-img")
 const cardElementImg = popUpNewCard.querySelector("#href")
 
-const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-]
 
 //функция открытия попапа 
 function openPopUp(element) {
@@ -176,11 +151,12 @@ function savePopUpEdit(evt) {
 
 //функция добавления новой карточки 
 function createNewCard(evt) {
-  evt.preventDefault()
+  evt.preventDefault();
   groupCards.prepend(createCard(cardElementName.value, cardElementImg.value))
   closePopUp(popUpNewCard)
-  inputNewCardName.value = ""
-  inputNewCardHref.value = ""
+  inputNewCardName.value = "";
+  inputNewCardHref.value = "";
+  disbaledButton(buttonSaveNewCard, configFormSelector);
 }
 
 //установка слушателя событий на кнопку редактирования 
