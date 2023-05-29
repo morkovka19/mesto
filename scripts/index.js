@@ -1,12 +1,16 @@
 //попапы
-const popUpEdit = document.querySelector("#popup-edit")
-const popUpNewCard = document.querySelector("#popup-new-card")
-const popupImage = document.querySelector("#popup-card")
+import Card from "../scripts/Card.js";
+import { initialCards } from './cards.js';
+import  FormValidator  from "./FormValidator.js";
+
+const popUpEdit = document.querySelector("#popup-edit");
+const popUpNewCard = document.querySelector("#popup-new-card");
+export const popUpCard = document.querySelector("#popup-card")
 
 //Кнопки закрытия
 const buttonClosePopupProfile = popUpEdit.querySelector(".popup__btn")
 const buttonClosePopupAddCard = popUpNewCard.querySelector(".popup__btn")
-const buttonClosePopupImage = popupImage.querySelector(".popup__btn")
+const buttonClosePopupImage = popUpCard.querySelector(".popup__btn")
 const buttonSaveNewCard = popUpNewCard.querySelector('.popup__submit');
 
 //кнопки на основной странице 
@@ -23,8 +27,8 @@ const inputNewCardHref = popUpNewCard.querySelector("#href")
 const title = document.querySelector(".profile__title")
 const subtitle = document.querySelector(".profile__subtitle")
 const groupCards = document.querySelector(".elements__group")
-const cardTemplate = document.querySelector("#card").content
-const popUpCard = document.querySelector("#popup-card")
+//const cardTemplate = document.querySelector("#card").content
+
 
 //формы 
 const formCreateNewCard = popUpNewCard.querySelector(".popup__form")
@@ -34,9 +38,16 @@ const formEdit = popUpEdit.querySelector(".popup__form")
 const cardElementName = popUpNewCard.querySelector("#name-img")
 const cardElementImg = popUpNewCard.querySelector("#href")
 
+const configFormSelector = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_inactive',
+  inputErrorClass: 'popup__input_error',
+}
 
 //функция открытия попапа 
-function openPopUp(element) {
+export function openPopUp(element) {
   document.addEventListener("keydown", closePopUpEscape)
   element.classList.add("popup_opened")
 }
@@ -51,47 +62,28 @@ function closePopUp(element) {
 function closePopUpEscape(evt) {
   if (evt.code == "Escape") {
     const element = document.querySelector(".popup_opened")
-    console.log(element)
     closePopUp(element)
   }
-}
-
-//функция открытия попапа картинки 
-function openPopUpCard(src, name) {
-  openPopUp(popUpCard)
-  popUpCard.querySelector(".popup__img").src = src
-  popUpCard.querySelector(".popup__img").alt = name
-  popUpCard.querySelector(".popup__figcaption").textContent = name
-}
-
-//функция установления лайка на картинки 
-function addLike(element) {
-  element.classList.toggle("elements__btn-like_active")
-}
-
-//функция удаления картинки 
-function removeCard(element) {
-  element.remove()
 }
 
 //установка слушателя событий на попап ркдактирования 
 popUpEdit.addEventListener("click", (evt) => {
   if (evt.currentTarget === evt.target) {
-    closePopUp(popUpEdit)
+    closePopUp(popUpEdit);
   }
 })
 
 //установка слушателя события на попап добавления новой карточки 
 popUpNewCard.addEventListener("click", (evt) => {
   if (evt.currentTarget === evt.target) {
-    closePopUp(popUpNewCard)
+    closePopUp(popUpNewCard);
   }
 })
 
 //установка слушателя события на попап новой карточки 
-popupImage.addEventListener("click", (evt) => {
+popUpCard.addEventListener("click", (evt) => {
   if (evt.currentTarget === evt.target) {
-    closePopUp(popupImage)
+    closePopUp(popUpCard)
   }
 })
 
@@ -107,39 +99,8 @@ buttonClosePopupAddCard.addEventListener("click", () => {
 
 //установка слушателя событий на кнопку закрытия попапа карточки 
 buttonClosePopupImage.addEventListener("click", () => {
-  closePopUp(popupImage)
+  closePopUp(popUpCard)
 })
-
-
-//функция создания новой карточки 
-function createCard(name, src) {
-  const cardElement = cardTemplate
-    .querySelector(".elements__item")
-    .cloneNode(true)
-  cardElement.querySelector(".elements__item-img").src = src
-  cardElement.querySelector(".elements__item-title").textContent = name
-  cardElement.querySelector(".elements__item-img").alt = name
-  cardElement
-    .querySelector(".elements__item-img")
-    .addEventListener("click", function () {
-      openPopUpCard(src, name)
-    })
-  cardElement
-    .querySelector(".elements__btn-like")
-    .addEventListener("click", function () {
-      addLike(cardElement.querySelector(".elements__btn-like"))
-    })
-  cardElement
-    .querySelector(".elements__trash")
-    .addEventListener("click", function () {
-      removeCard(cardElement)
-    })
-  return cardElement
-}
-
-for (let item of initialCards) {
-  groupCards.append(createCard(item["name"], item["link"]))
-}
 
 //функция сохранения редактирования 
 function savePopUpEdit(evt) {
@@ -149,14 +110,21 @@ function savePopUpEdit(evt) {
   closePopUp(popUpEdit)
 }
 
+function  disbaledButton(button){
+  button.disabled = 'disabled';
+  button.classList.add(configFormSelector.inactiveButtonClass);
+}
+
+
 //функция добавления новой карточки 
 function createNewCard(evt) {
   evt.preventDefault();
-  groupCards.prepend(createCard(cardElementName.value, cardElementImg.value))
+  const card = new Card({'name': cardElementName.value, 'link': cardElementImg.value}, '#card')
+  groupCards.prepend(card.generateCard());
   closePopUp(popUpNewCard)
   inputNewCardName.value = "";
   inputNewCardHref.value = "";
-  disbaledButton(buttonSaveNewCard, configFormSelector);
+  disbaledButton(buttonSaveNewCard);
 }
 
 //установка слушателя событий на кнопку редактирования 
@@ -172,4 +140,15 @@ buttonAddNewCard.addEventListener("click", function () {
 
 //установкка слушателя событий на форму создания новой карточки 
 formCreateNewCard.addEventListener("submit", createNewCard)
+
+for (let item of initialCards) {
+  const card = new Card(item, '#card');
+  groupCards.append(card.generateCard());
+}
+
+const forms = document.querySelectorAll(configFormSelector.formSelector);
+[...forms].forEach((formItem)=>{
+  const form = new FormValidator(configFormSelector, formItem);
+  form.enableValidation();
+});
 
