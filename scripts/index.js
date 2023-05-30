@@ -3,9 +3,15 @@ import Card from "../scripts/Card.js";
 import { initialCards } from './cards.js';
 import  FormValidator  from "./FormValidator.js";
 
+import {openPopUp} from '../utils/utils.js';
+import {popUpCard} from '../utils/utils.js';
+import {closePopUpEscape} from '../utils/utils.js';
+
+import {disableSubmitButton} from './validate.js';
+
 const popUpEdit = document.querySelector("#popup-edit");
 const popUpNewCard = document.querySelector("#popup-new-card");
-export const popUpCard = document.querySelector("#popup-card")
+
 
 //Кнопки закрытия
 const buttonClosePopupProfile = popUpEdit.querySelector(".popup__btn")
@@ -46,11 +52,7 @@ const configFormSelector = {
   inputErrorClass: 'popup__input_error',
 }
 
-//функция открытия попапа 
-export function openPopUp(element) {
-  document.addEventListener("keydown", closePopUpEscape)
-  element.classList.add("popup_opened")
-}
+
 
 //функция скрытия попапа 
 function closePopUp(element) {
@@ -58,13 +60,7 @@ function closePopUp(element) {
   document.removeEventListener("keydown", closePopUpEscape)
 }
 
-//функция закрытия попапа по esc
-function closePopUpEscape(evt) {
-  if (evt.code == "Escape") {
-    const element = document.querySelector(".popup_opened")
-    closePopUp(element)
-  }
-}
+
 
 //установка слушателя событий на попап ркдактирования 
 popUpEdit.addEventListener("click", (evt) => {
@@ -110,21 +106,20 @@ function savePopUpEdit(evt) {
   closePopUp(popUpEdit)
 }
 
-function  disbaledButton(button){
-  button.disabled = 'disabled';
-  button.classList.add(configFormSelector.inactiveButtonClass);
+function createCard(data){
+  return new Card(data, '#card');
 }
 
 
 //функция добавления новой карточки 
 function createNewCard(evt) {
   evt.preventDefault();
-  const card = new Card({'name': cardElementName.value, 'link': cardElementImg.value}, '#card')
+  const card = createCard({'name': cardElementName.value, 'link': cardElementImg.value})
   groupCards.prepend(card.generateCard());
   closePopUp(popUpNewCard)
   inputNewCardName.value = "";
   inputNewCardHref.value = "";
-  disbaledButton(buttonSaveNewCard);
+  disableSubmitButton(buttonSaveNewCard, configFormSelector);
 }
 
 //установка слушателя событий на кнопку редактирования 
@@ -142,7 +137,7 @@ buttonAddNewCard.addEventListener("click", function () {
 formCreateNewCard.addEventListener("submit", createNewCard)
 
 for (let item of initialCards) {
-  const card = new Card(item, '#card');
+  const card = createCard(item);
   groupCards.append(card.generateCard());
 }
 

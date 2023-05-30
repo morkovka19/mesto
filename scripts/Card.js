@@ -1,5 +1,9 @@
-import {openPopUp} from './index.js';
-import {popUpCard} from './index.js';
+import {openPopUp} from '../utils/utils.js';
+import {popUpCard} from '../utils/utils.js';
+
+const imgFromPopUpCard = popUpCard.querySelector('.popup__img');
+const figcaptionFromPopUpCard = popUpCard.querySelector(".popup__figcaption");
+
 
 export default class Card{
     constructor(data, templateSelector){
@@ -15,9 +19,9 @@ export default class Card{
 
     _openPopUpCard(){
         openPopUp(popUpCard);
-        popUpCard.querySelector(".popup__img").src = this._src
-        popUpCard.querySelector(".popup__img").alt = this._name
-        popUpCard.querySelector(".popup__figcaption").textContent = this._name;
+        imgFromPopUpCard.src = this._src
+        imgFromPopUpCard.alt = this._name
+        figcaptionFromPopUpCard.textContent = this._name;
     }
 
     _addLike(){
@@ -44,9 +48,10 @@ export default class Card{
 
     generateCard(){
         this._element = this._getTemplate();
-        this._element.querySelector(".elements__item-img").src = this._src;
+        this._img =  this._element.querySelector(".elements__item-img");
+        this._img.src = this._src;
         this._element.querySelector(".elements__item-title").textContent = this._name;
-        this._element.querySelector('.elements__item-img').alt = this._name;
+        this._img.alt = this._name;
 
         this._setEventListeners();
         return this._element;
