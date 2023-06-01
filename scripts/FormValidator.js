@@ -1,5 +1,3 @@
-import {disableSubmitButton} from './validate.js';
-
 export default class FormValidator{
     constructor(config, formElement){
         this._config = config;
@@ -21,8 +19,9 @@ export default class FormValidator{
         this._submitButtonElement.classList.remove(this._config.inactiveButtonClass);
     }
 
-    _disbaledButton(){
-        disableSubmitButton(this._submitButtonElement, this._config);
+    disableSubmitButton(){
+        this._submitButtonElement.disabled = 'disabled';
+        this._submitButtonElement.classList.add(this._config.inactiveButtonClass);
     }
 
     _checkInputValidity(inputElement){
@@ -40,7 +39,7 @@ export default class FormValidator{
 
     _toggleButtonState(){
         if (!this._formElement.checkValidity()){
-            this._disbaledButton();
+            this.disableSubmitButton();
         } else{
             this._enableButton();
         }

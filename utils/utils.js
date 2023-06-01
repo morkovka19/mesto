@@ -11,4 +11,9 @@ export function closePopUpEscape(evt) {
     }
   }
 
-  export const popUpCard = document.querySelector("#popup-card")
+export  function closePopUp(element) {
+    element.classList.remove("popup_opened")
+    document.removeEventListener("keydown", closePopUpEscape)
+  }
+  
+export const popUpCard = document.querySelector("#popup-card")

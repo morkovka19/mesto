@@ -1,23 +1,36 @@
 //попапы
 import Card from "../scripts/Card.js";
-import { initialCards } from './cards.js';
 import  FormValidator  from "./FormValidator.js";
+import { initialCards } from './cards.js';
+import {openPopUp, popUpCard, closePopUpEscape, closePopUp} from '../utils/utils.js';
 
-import {openPopUp} from '../utils/utils.js';
-import {popUpCard} from '../utils/utils.js';
-import {closePopUpEscape} from '../utils/utils.js';
 
-import {disableSubmitButton} from './validate.js';
+
+const configFormSelector = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_inactive',
+  inputErrorClass: 'popup__input_error',
+}
 
 const popUpEdit = document.querySelector("#popup-edit");
 const popUpNewCard = document.querySelector("#popup-new-card");
+
+
+const formCreateNewCard = popUpNewCard.querySelector(configFormSelector.formSelector);
+const formEdit = popUpEdit.querySelector(configFormSelector.formSelector);
+const addCardFormValidator = new FormValidator(configFormSelector, formCreateNewCard);
+const editFormValidator = new FormValidator(configFormSelector, formEdit);
+addCardFormValidator.enableValidation();
+editFormValidator.enableValidation();
+
 
 
 //Кнопки закрытия
 const buttonClosePopupProfile = popUpEdit.querySelector(".popup__btn")
 const buttonClosePopupAddCard = popUpNewCard.querySelector(".popup__btn")
 const buttonClosePopupImage = popUpCard.querySelector(".popup__btn")
-const buttonSaveNewCard = popUpNewCard.querySelector('.popup__submit');
 
 //кнопки на основной странице 
 const editButton = document.querySelector(".profile__icon")
@@ -35,31 +48,9 @@ const subtitle = document.querySelector(".profile__subtitle")
 const groupCards = document.querySelector(".elements__group")
 //const cardTemplate = document.querySelector("#card").content
 
-
-//формы 
-const formCreateNewCard = popUpNewCard.querySelector(".popup__form")
-const formEdit = popUpEdit.querySelector(".popup__form")
-
 //элементы карточек
 const cardElementName = popUpNewCard.querySelector("#name-img")
 const cardElementImg = popUpNewCard.querySelector("#href")
-
-const configFormSelector = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitSelector: '.popup__submit',
-  inactiveButtonClass: 'popup__submit_inactive',
-  inputErrorClass: 'popup__input_error',
-}
-
-
-
-//функция скрытия попапа 
-function closePopUp(element) {
-  element.classList.remove("popup_opened")
-  document.removeEventListener("keydown", closePopUpEscape)
-}
-
 
 
 //установка слушателя событий на попап ркдактирования 
@@ -110,7 +101,6 @@ function createCard(data){
   return new Card(data, '#card');
 }
 
-
 //функция добавления новой карточки 
 function createNewCard(evt) {
   evt.preventDefault();
@@ -119,7 +109,7 @@ function createNewCard(evt) {
   closePopUp(popUpNewCard)
   inputNewCardName.value = "";
   inputNewCardHref.value = "";
-  disableSubmitButton(buttonSaveNewCard, configFormSelector);
+  addCardFormValidator.disableSubmitButton();
 }
 
 //установка слушателя событий на кнопку редактирования 
@@ -129,6 +119,7 @@ editButton.addEventListener("click", function () {
 
 //установка слушателя событий на форму сохранения редактирования 
 formEdit.addEventListener("submit", savePopUpEdit)
+
 buttonAddNewCard.addEventListener("click", function () {
   openPopUp(popUpNewCard)
 })
@@ -141,9 +132,4 @@ for (let item of initialCards) {
   groupCards.append(card.generateCard());
 }
 
-const forms = document.querySelectorAll(configFormSelector.formSelector);
-[...forms].forEach((formItem)=>{
-  const form = new FormValidator(configFormSelector, formItem);
-  form.enableValidation();
-});
 
