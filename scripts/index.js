@@ -1,5 +1,5 @@
 //попапы
-import Card from "../scripts/Card.js";
+/*import Card from "../scripts/Card.js";
 import  FormValidator  from "./FormValidator.js";
 import { initialCards } from './cards.js';
 import {openPopUp, popUpCard, closePopUpEscape, closePopUp} from '../utils/utils.js';
@@ -132,4 +132,17 @@ for (let item of initialCards) {
   groupCards.append(card.generateCard());
 }
 
+*/
 
+import Popup from "../scripts/Popup.js";
+
+const popup = new Popup('#popup-new-card');
+const buttonPopupNewCardOnen = document.querySelector('.profile__btn');
+console.log(buttonPopupNewCardOnen)
+buttonPopupNewCardOnen.addEventListener('click', () =>{
+  popup.open();
+})
+
+const buttonClosePopupNewCard = document.querySelector('#popup-new-card').querySelector('.popup__btn');
+console.log(buttonClosePopupNewCard);
+buttonClosePopupNewCard.addEventListener('click', popup.setEventListeners(buttonClosePopupNewCard))

@@ -1,4 +1,4 @@
-export function openPopUp(element) {
+/*export function openPopUp(element) {
     document.addEventListener("keydown", closePopUpEscape)
     element.classList.add("popup_opened")
   }
@@ -16,4 +16,4 @@ export  function closePopUp(element) {
     document.removeEventListener("keydown", closePopUpEscape)
   }
   
-export const popUpCard = document.querySelector("#popup-card")
+export const popUpCard = document.querySelector("#popup-card")*/
