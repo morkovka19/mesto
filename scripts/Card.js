@@ -46,6 +46,14 @@ export default class Card{
         })
     }
 
+    getName(){
+        return this._name;
+    }
+
+    getSrc(){
+        return this._src;
+    }
+
     generateCard(){
         this._element = this._getTemplate();
         this._img =  this._element.querySelector(".elements__item-img");
