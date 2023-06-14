@@ -17,3 +17,4 @@ export  function closePopUp(element) {
   }
   
 export const popUpCard = document.querySelector("#popup-card")*/
+

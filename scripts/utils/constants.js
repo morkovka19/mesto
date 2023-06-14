@@ -25,3 +25,12 @@ export const initialCards = [
     },
   ]
   
+
+ 
+export const configFormSelector = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_inactive',
+  inputErrorClass: 'popup__input_error',
+}

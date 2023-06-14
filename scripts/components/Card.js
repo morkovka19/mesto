@@ -1,8 +1,8 @@
-import {openPopUp} from '../utils/utils.js';
-import {popUpCard} from '../utils/utils.js';
+//import {openPopUp} from '../../utils/utils.js';
+//import {popUpCard} from '../../utils/utils.js';
 
-const imgFromPopUpCard = popUpCard.querySelector('.popup__img');
-const figcaptionFromPopUpCard = popUpCard.querySelector(".popup__figcaption");
+//const imgFromPopUpCard = popUpCard.querySelector('.popup__img');
+//const figcaptionFromPopUpCard = popUpCard.querySelector(".popup__figcaption");
 
 
 export default class Card{
@@ -18,12 +18,12 @@ export default class Card{
         return cardElement;
     }
 
-    _openPopUpCard(){
+    /*_openPopUpCard(){
         openPopUp(popUpCard);
         imgFromPopUpCard.src = this._src
         imgFromPopUpCard.alt = this._name
         figcaptionFromPopUpCard.textContent = this._name;
-    }
+    }*/
 
     _addLike(){
         this._element.querySelector('.elements__btn-like').classList.toggle("elements__btn-like_active");
@@ -34,9 +34,8 @@ export default class Card{
     }
 
     _setEventListeners(){
-        this._element.querySelector('.elements__item-img').addEventListener('click', ()=>{
-            this._handleCardClick;
-        })
+        this._element.querySelector('.elements__item-img').addEventListener('click', this._handleCardClick)
+        
 
         this._element.querySelector('.elements__btn-like').addEventListener('click', ()=>{
             this._addLike();

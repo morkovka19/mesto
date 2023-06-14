@@ -6,13 +6,6 @@ import {openPopUp, popUpCard, closePopUpEscape, closePopUp} from '../utils/utils
 
 
 
-const configFormSelector = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitSelector: '.popup__submit',
-  inactiveButtonClass: 'popup__submit_inactive',
-  inputErrorClass: 'popup__input_error',
-}
 
 const popUpEdit = document.querySelector("#popup-edit");
 const popUpNewCard = document.querySelector("#popup-new-card");
@@ -134,8 +127,42 @@ for (let item of initialCards) {
 
 */
 
-import Popup from "../scripts/Popup.js";
-import PopupWithForm from "../scripts/PopupWithForm.js";
+import {initialCards, configFormSelector} from '../utils/constants.js'
+import Card from '../components/Card.js'
+import PopupwithImage from '../components/PopupWithImage.js'
+import PopupWithForm from '../components/PopupWithForm.js';
+import Section from '../components/Section.js';
+import FormValidator from '../components/FormValidator.js';
+
+
+const popupWihtImage = new PopupwithImage('#popup-card');
+popupWihtImage.setEventListeners();
+
+const cardGroup = new Section({items: initialCards, renderer: createCard}, '.elements__group' )
+cardGroup.renderItems()
+
+function createCard(data){
+  const card = new Card(data, '#card', (evt)=>{
+    popupWihtImage.open(evt);
+  });
+  cardGroup.addItem(card.generateCard());
+}
+
+const popupWithFormEdit = new PopupWithForm('#popup-edit');
+popupWithFormEdit.setEventListeners();
+
+const buttonOpenFormEdit = document.querySelector('.profile__btn-redaction');
+buttonOpenFormEdit.addEventListener('click', ()=>{
+  popupWithFormEdit.open()
+})
+
+
+const formEdit = document.querySelector('#popup-edit').querySelector(configFormSelector.formSelector);
+const editFormValidator = new FormValidator(configFormSelector, formEdit);
+
+
+
+
 
 
 
