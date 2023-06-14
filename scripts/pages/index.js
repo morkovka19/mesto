@@ -20,10 +20,7 @@ editFormValidator.enableValidation();
 
 
 
-//Кнопки закрытия
-const buttonClosePopupProfile = popUpEdit.querySelector(".popup__btn")
-const buttonClosePopupAddCard = popUpNewCard.querySelector(".popup__btn")
-const buttonClosePopupImage = popUpCard.querySelector(".popup__btn")
+
 
 //кнопки на основной странице 
 const editButton = document.querySelector(".profile__icon")
@@ -127,18 +124,28 @@ for (let item of initialCards) {
 
 */
 
-import {initialCards, configFormSelector} from '../utils/constants.js'
+import {initialCards, configFormSelector, inputInfo, inputName, title, subtitle, buttonOpenFormEdit, buttonAddNewCard, formEdit, formCreateNewCard, inputNewCardHref, inputNewCardName} from '../utils/constants.js'
 import Card from '../components/Card.js'
 import PopupwithImage from '../components/PopupWithImage.js'
 import PopupWithForm from '../components/PopupWithForm.js';
 import Section from '../components/Section.js';
 import FormValidator from '../components/FormValidator.js';
+import UserInfo from '../components/UserInfo.js';
 
 
 const popupWihtImage = new PopupwithImage('#popup-card');
-popupWihtImage.setEventListeners();
+const cardGroup = new Section({items: initialCards, renderer: createCard}, '.elements__group' );
+const userInfo = new UserInfo({name: title.textContent, info: subtitle.textContent});
+const editFormValidator = new FormValidator(configFormSelector, formEdit);
+const popupWithFormEdit = new PopupWithForm('#popup-edit', savePopUpEdit);
+const addCardFormValidator = new FormValidator(configFormSelector, formCreateNewCard);
 
-const cardGroup = new Section({items: initialCards, renderer: createCard}, '.elements__group' )
+const popupWithNewCard = new PopupWithForm('#popup-new-card', (evt)=>{
+  createNewCard(evt);
+});
+
+
+popupWihtImage.setEventListeners();
 cardGroup.renderItems()
 
 function createCard(data){
@@ -148,17 +155,56 @@ function createCard(data){
   cardGroup.addItem(card.generateCard());
 }
 
-const popupWithFormEdit = new PopupWithForm('#popup-edit');
+
+
+//функция сохранения редактирования 
+function savePopUpEdit(evt) {
+  evt.preventDefault()
+  userInfo.setUserInfo({ newName: inputName.value, newInfo: inputInfo.value })
+  popupWithFormEdit.close();
+}
+
+
+
+
+editFormValidator.enableValidation();
+
+
 popupWithFormEdit.setEventListeners();
 
-const buttonOpenFormEdit = document.querySelector('.profile__btn-redaction');
+
 buttonOpenFormEdit.addEventListener('click', ()=>{
-  popupWithFormEdit.open()
+  popupWithFormEdit.open();
+  inputInfo.value = userInfo.getUserInfo().info;
+  inputName.value = userInfo.getUserInfo().name;
 })
 
 
-const formEdit = document.querySelector('#popup-edit').querySelector(configFormSelector.formSelector);
-const editFormValidator = new FormValidator(configFormSelector, formEdit);
+addCardFormValidator.enableValidation();
+
+function createNewCard(evt) {
+  evt.preventDefault();
+  const card = new Card({name: inputNewCardName.value, link: inputNewCardHref.value}, '#card', (evt)=>{
+    popupWihtImage.open(evt);
+  });
+  cardGroup.addItem(card.generateCard());
+  popupWithNewCard.close();
+  inputNewCardName.value = "";
+  inputNewCardHref.value = "";
+  addCardFormValidator.disableSubmitButton();
+}
+
+
+popupWithNewCard.setEventListeners();
+
+buttonAddNewCard.addEventListener('click', ()=>{
+  popupWithNewCard.open();
+});
+
+
+
+
+
 
 
 

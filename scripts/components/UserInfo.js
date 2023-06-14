@@ -1,3 +1,5 @@
+import { title, subtitle } from "../utils/constants.js";
+
 export default class UserInfo {
     constructor({name, info}){
         this._userName = name;
@@ -13,9 +15,8 @@ export default class UserInfo {
     setUserInfo({newName, newInfo}){
         this._userName = newName;
         this._userInfo = newInfo;
-        document.querySelector('.profile__title').textContent = this._userName;
-        document.querySelector('.profile__subtitle').textContent = this._userInfo;
-
+        title.textContent = this._userName;
+        subtitle.textContent = this._userInfo;
     }
 
 }

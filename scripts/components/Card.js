@@ -1,10 +1,3 @@
-//import {openPopUp} from '../../utils/utils.js';
-//import {popUpCard} from '../../utils/utils.js';
-
-//const imgFromPopUpCard = popUpCard.querySelector('.popup__img');
-//const figcaptionFromPopUpCard = popUpCard.querySelector(".popup__figcaption");
-
-
 export default class Card{
     constructor(data, templateSelector, handleCardClick){
         this._name = data.name;
@@ -17,13 +10,6 @@ export default class Card{
         const cardElement = document.querySelector(this._templateSelector).content.querySelector('.elements__item').cloneNode(true);
         return cardElement;
     }
-
-    /*_openPopUpCard(){
-        openPopUp(popUpCard);
-        imgFromPopUpCard.src = this._src
-        imgFromPopUpCard.alt = this._name
-        figcaptionFromPopUpCard.textContent = this._name;
-    }*/
 
     _addLike(){
         this._element.querySelector('.elements__btn-like').classList.toggle("elements__btn-like_active");
@@ -46,21 +32,12 @@ export default class Card{
         })
     }
 
-    getName(){
-        return this._name;
-    }
-
-    getSrc(){
-        return this._src;
-    }
-
     generateCard(){
         this._element = this._getTemplate();
         this._img =  this._element.querySelector(".elements__item-img");
         this._img.src = this._src;
         this._element.querySelector(".elements__item-title").textContent = this._name;
         this._img.alt = this._name;
-
         this._setEventListeners();
         return this._element;
     }
