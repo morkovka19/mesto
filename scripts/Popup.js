@@ -21,8 +21,8 @@ export default class Popup{
     }
 
   
-    setEventListeners(buttonElement){
-        buttonElement.addEventListener('click', this.close.bind(this));
+    setEventListeners(){
+        this._popupTemplate.querySelector('.popup__btn').addEventListener('click', this.close.bind(this));
         this._popupTemplate.addEventListener('click', (evt) =>{
             if (evt.currentTarget === evt.target) {
                 this.close();

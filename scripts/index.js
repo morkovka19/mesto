@@ -135,14 +135,11 @@ for (let item of initialCards) {
 */
 
 import Popup from "../scripts/Popup.js";
+import PopupWithForm from "../scripts/PopupWithForm.js";
 
-const popup = new Popup('#popup-new-card');
-const buttonPopupNewCardOnen = document.querySelector('.profile__btn');
-console.log(buttonPopupNewCardOnen)
-buttonPopupNewCardOnen.addEventListener('click', () =>{
-  popup.open();
-})
 
-const buttonClosePopupNewCard = document.querySelector('#popup-new-card').querySelector('.popup__btn');
-console.log(buttonClosePopupNewCard);
-buttonClosePopupNewCard.addEventListener('click', popup.setEventListeners(buttonClosePopupNewCard))
+
+
+
+
+
