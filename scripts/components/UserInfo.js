@@ -10,8 +10,6 @@ export default class UserInfo {
         return {name: this._userName, info: this._userInfo};
     }
 
-    
-
     setUserInfo({newName, newInfo}){
         this._userName = newName;
         this._userInfo = newInfo;
