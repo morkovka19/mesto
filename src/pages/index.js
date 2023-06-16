@@ -1,10 +1,12 @@
-import {initialCards, configFormSelector, inputInfo, inputName, title, subtitle, buttonOpenFormEdit, buttonAddNewCard, formEdit, formCreateNewCard, inputNewCardHref, inputNewCardName} from '../utils/constants.js'
-import Card from '../components/Card.js'
-import PopupwithImage from '../components/PopupWithImage.js'
-import PopupWithForm from '../components/PopupWithForm.js';
-import Section from '../components/Section.js';
-import FormValidator from '../components/FormValidator.js';
-import UserInfo from '../components/UserInfo.js';
+import './index.css';
+
+import {initialCards, configFormSelector, inputInfo, inputName, title, subtitle, buttonOpenFormEdit, buttonAddNewCard, formEdit, formCreateNewCard, inputNewCardHref, inputNewCardName} from '../scripts/utils/constants.js'
+import Card from '../scripts/components/Card.js'
+import PopupwithImage from '../scripts/components/PopupWithImage.js'
+import PopupWithForm from '../scripts/components/PopupWithForm.js';
+import Section from '../scripts/components/Section.js';
+import FormValidator from '../scripts/components/FormValidator.js';
+import UserInfo from '../scripts/components/UserInfo.js';
 
 //попап с картинкой
 const popupWihtImage = new PopupwithImage('#popup-card');
