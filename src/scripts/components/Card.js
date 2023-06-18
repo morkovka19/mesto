@@ -12,7 +12,7 @@ export default class Card{
     }
 
     _addLike(){
-        this._element.querySelector('.elements__btn-like').classList.toggle("elements__btn-like_active");
+        this._btnLike.classList.toggle("elements__btn-like_active");
     }
 
     _removeCard(){
@@ -20,10 +20,10 @@ export default class Card{
     }
 
     _setEventListeners(){
-        this._element.querySelector('.elements__item-img').addEventListener('click', this._handleCardClick)
+        this._img.addEventListener('click', this._handleCardClick)
         
 
-        this._element.querySelector('.elements__btn-like').addEventListener('click', ()=>{
+        this._btnLike.addEventListener('click', ()=>{
             this._addLike();
         })
 
@@ -34,7 +34,8 @@ export default class Card{
 
     generateCard(){
         this._element = this._getTemplate();
-        this._img =  this._element.querySelector(".elements__item-img");
+        this._img = this._element.querySelector('.elements__item-img');
+        this._btnLike = this._element.querySelector('.elements__btn-like');
         this._img.src = this._src;
         this._element.querySelector(".elements__item-title").textContent = this._name;
         this._img.alt = this._name;

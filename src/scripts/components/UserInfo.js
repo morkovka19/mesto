@@ -1,20 +1,18 @@
-import { title, subtitle } from "../utils/constants.js";
+import { info } from "autoprefixer";
 
 export default class UserInfo {
-    constructor({name, info}){
-        this._userName = name;
-        this._userInfo = info;
+    constructor({nameSelector, infoSelector}){
+        this._userName = document.querySelector(nameSelector);
+        this._userInfo = document.querySelector(infoSelector);
     }
 
     getUserInfo(){
-        return {name: this._userName, info: this._userInfo};
+        return {name: this._userName.textContent, info: this._userInfo.textContent};
     }
 
-    setUserInfo({newName, newInfo}){
-        this._userName = newName;
-        this._userInfo = newInfo;
-        title.textContent = this._userName;
-        subtitle.textContent = this._userInfo;
+    setUserInfo({name, info}){
+        this._userName.textContent = name;
+        this._userInfo.textContent = info;
     }
 
 }

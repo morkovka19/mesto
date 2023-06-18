@@ -33,8 +33,7 @@ export const configFormSelector = {
   inputErrorClass: 'popup__input_error',
 };
 
-export const title =  document.querySelector('.profile__title');
-export const subtitle = document.querySelector('.profile__subtitle');
+
 export const inputName = document.querySelector(".popup__input_name_name");
 export const inputInfo = document.querySelector(".popup__input_name_info");
 export const buttonOpenFormEdit = document.querySelector('.profile__btn-redaction');

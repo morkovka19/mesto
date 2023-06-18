@@ -20,12 +20,11 @@ export default class FormValidator{
     }
 
     disableSubmitButton(){
-        this._submitButtonElement.disabled = 'disabled';
+        this._submitButtonElement.disabled = true;
         this._submitButtonElement.classList.add(this._config.inactiveButtonClass);
     }
 
     _checkInputValidity(inputElement){
-        inputElement.setCustomValidity="";
         const isInputValid = inputElement.validity.valid;
         const errorElement = this._formElement.querySelector(`#${inputElement.name}-error`);
         if (!errorElement) return;
@@ -56,7 +55,7 @@ export default class FormValidator{
             evt.preventDefault();
         });
         
-        [...this._inputList].forEach((inputItem) =>{
+        this._inputList.forEach((inputItem) =>{
             inputItem.addEventListener('input', ()=>{
                 this._checkInputValidity(inputItem);
                 this._toggleButtonState();

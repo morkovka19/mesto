@@ -1,6 +1,6 @@
 import './index.css';
 
-import {initialCards, configFormSelector, inputInfo, inputName, title, subtitle, buttonOpenFormEdit, buttonAddNewCard, formEdit, formCreateNewCard, inputNewCardHref, inputNewCardName} from '../scripts/utils/constants.js'
+import {initialCards, configFormSelector, inputInfo, inputName, buttonOpenFormEdit, buttonAddNewCard, formEdit, formCreateNewCard, inputNewCardHref, inputNewCardName} from '../scripts/utils/constants.js'
 import Card from '../scripts/components/Card.js'
 import PopupwithImage from '../scripts/components/PopupWithImage.js'
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
@@ -20,7 +20,7 @@ const cardGroup = new Section({items: initialCards, renderer: createCard}, '.ele
 cardGroup.renderItems();
 
 //объект с информацией об авторе
-const userInfo = new UserInfo({name: title.textContent, info: subtitle.textContent});
+const userInfo = new UserInfo({nameSelector: '.profile__title', infoSelector: '.profile__subtitle'});
 
 //объекты для валидации форм 
 const editFormValidator = new FormValidator(configFormSelector, formEdit);
@@ -44,45 +44,25 @@ function createCard(data){
 }
 
 //сохранение редактирования информации 
-function savePopUpEdit(evt) {
-  evt.preventDefault()
-  userInfo.setUserInfo({ newName: inputName.value, newInfo: inputInfo.value })
-  popupWithFormEdit.close();
+function savePopUpEdit({name, info}) {
+  userInfo.setUserInfo({ name, info });
 }
 
 //создание новой карточки после добавления 
-function createNewCard(evt) {
-  evt.preventDefault();
+function createNewCard() {
   createCard({ name: inputNewCardName.value, link: inputNewCardHref.value })
   popupWithNewCard.close();
-  inputNewCardName.value = "";
-  inputNewCardHref.value = "";
-  addCardFormValidator.disableSubmitButton();
 }
 
 //сдушатели событий на кнопки для открытия попапов с формами 
 buttonAddNewCard.addEventListener('click', ()=>{
+  addCardFormValidator.disableSubmitButton();
   popupWithNewCard.open();
 });
 
 buttonOpenFormEdit.addEventListener('click', ()=>{
   popupWithFormEdit.open();
-  inputInfo.value = userInfo.getUserInfo().info;
-  inputName.value = userInfo.getUserInfo().name;
+  const userInfoFromPage = userInfo.getUserInfo();
+  inputInfo.value = userInfoFromPage.info;
+  inputName.value = userInfoFromPage.name;
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
