@@ -36,9 +36,9 @@ editFormValidator.enableValidation();
 addCardFormValidator.enableValidation();
 
 //создание крточки 
-function createCard(data){
-  const card = new Card(data, '#card', (evt)=>{
-    popupWihtImage.open(evt);
+function createCard(name, src){
+  const card = new Card('#card', (name, src)=>{
+    popupWihtImage.open(name, src);
   });
   cardGroup.addItem(card.generateCard());
 }
@@ -50,8 +50,7 @@ function savePopUpEdit({name, info}) {
 
 //создание новой карточки после добавления 
 function createNewCard() {
-  createCard({ name: inputNewCardName.value, link: inputNewCardHref.value })
-  popupWithNewCard.close();
+  createCard({ name: inputValues['name-img'], link: inputValues['info-img'] });
 }
 
 //сдушатели событий на кнопки для открытия попапов с формами 
