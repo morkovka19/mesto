@@ -36,8 +36,8 @@ editFormValidator.enableValidation();
 addCardFormValidator.enableValidation();
 
 //создание крточки 
-function createCard(name, src){
-  const card = new Card('#card', (name, src)=>{
+function createCard(data){
+  const card = new Card(data, '#card', (name, src) => {
     popupWihtImage.open(name, src);
   });
   cardGroup.addItem(card.generateCard());
@@ -49,7 +49,7 @@ function savePopUpEdit({name, info}) {
 }
 
 //создание новой карточки после добавления 
-function createNewCard() {
+function createNewCard(inputValues) {
   createCard({ name: inputValues['name-img'], link: inputValues['info-img'] });
 }
 
