@@ -50,3 +50,11 @@
 @import url(../blocks/error/error.css);
 @import url(../blocks/popup/__submit/_inactive/popup__submit_inactive.css);
 @import url(../blocks/popup/__input/_error/popup__input_error.css);
+@import url(../blocks/elements/__amount-likes/elements__amount-likes.css);
+@import url(../blocks/elements/__block-like/elements__block-like.css);
+@import url(../blocks/elements/__trash/_noactive/elements__trash_noactive.css);
+@import url(../blocks/popup/__form/_position/popup__form_position_card-delete.css);
+@import url(../blocks/popup/__container/_position/popup__container_position_card-delete.css);
+@import url(../blocks/profile/__icon-pen/profile__icon-pen.css);
+@import url(../blocks/profile/__block-pen/profile__block-pen.css);
+

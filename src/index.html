@@ -15,6 +15,7 @@
         <section class="profile root__container-center">
             <div class="profile__block-author">
                 <img class="profile__avatar" src="<%=require('./images/jak-iv-kusto.jpg')%>" alt="фото автора">
+                <div class="profile__block-pen"><img class="profile__icon-pen" src="<%=require('./images/icon/pen.svg')%>" alt='иконка редактирования аватара'></div>
                 <div class="profile__block-info">
                     <div class="profile__block-title">
                         <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -71,6 +72,31 @@
             </form>
         </div>
     </section>
+    <section class="popup" id="popup-edit-avatar">
+        <div class="popup__container">
+            <button class="popup__btn" type="reset"><img class="popup__icon" src="<%=require('./images/icon/close-icon-min.svg')%>"
+                    alt="иконка крестик"></button>
+            <h2 class="popup__title">Обновить аватар</h2>
+            <form class="popup__form" name="form" novalidate>
+                <fieldset class="popup__inputs-container">
+                    <input class="popup__input popup__input_name_info" type="url" required
+                        placeholder="Ссылка на картинку" id="href" name="info-img">
+                    <span id="info-img-error" class="error error_name_info"></span>
+                </fieldset>
+                <button class="popup__submit popup__submit_inactive" type="submit" value="Сохранить">Сохранить</button>
+            </form>
+        </div>
+    </section>
+    <section class="popup" id="popup-delete-card">
+        <div class="popup__container popup__container_position_card-delete">
+            <button class="popup__btn" type="reset"><img class="popup__icon" src="<%=require('./images/icon/close-icon-min.svg')%>"
+                    alt="иконка крестик"></button>
+            <h2 class="popup__title">Вы уверены?</h2>
+            <form class="popup__form popup__form_position_card-delete" name="form">
+                <button class="popup__submit popup__submit_inactive" type="submit" value="Сохранить">Да</button>
+            </form>
+        </div>
+    </section>
     <section class="popup popup_opacity" id="popup-card">
         <div class="popup__card-container">
             <button class="popup__btn popup__btn_position_card" type="reset"><img class="popup__icon"
@@ -79,13 +105,17 @@
             <p class="popup__figcaption"></p>
         </div>
     </section>
+    
     <template id="card">
         <li class="elements__item">
             <img class="elements__item-img" src="#" alt="фото">
             <button class="elements__trash" tupe="submit"></button>
             <div class="elements__item-block">
                 <h2 class="elements__item-title"></h2>
-                <button type="button" class="elements__btn-like"></button>
+                <div class="elements__block-like">
+                    <button type="button" class="elements__btn-like"></button>
+                    <span class="elements__amount-likes"></span>
+                </div>
             </div>
         </li>
     </template>

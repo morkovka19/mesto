@@ -1,9 +1,18 @@
+import {api} from '../../pages/index.js'
+
 export default class Card{
-    constructor(data, templateSelector, handleCardClick){
+    constructor(data, templateSelector, handleCardClick, getInfoAboutAuthor, deleteLike, addLike, openPopupDeleteCard){
         this._name = data.name;
         this._src  = data.link;
+        this._likes = data.likes;
         this._templateSelector = templateSelector;
         this._handleCardClick = handleCardClick;
+        this._id = data._id;
+        this._owner = data.owner;
+        this._getInfoAboutAuthor = getInfoAboutAuthor;
+        this._addLikeApi = addLike;
+        this._deleteLikeApi = deleteLike;
+        this._openPopupDeleteCard = openPopupDeleteCard;
     }
 
     _getTemplate(){
@@ -12,10 +21,36 @@ export default class Card{
     }
 
     _addLike(){
-        this._btnLike.classList.toggle("elements__btn-like_active");
+        if (this._btnLike.classList.contains('elements__btn-like_active')){
+            this._deleteLikeApi(this._id).then(res =>{
+                if (res.ok){
+                    this._btnLike.classList.remove('elements__btn-like_active');
+                    res.json().then(res =>{
+                        this._amountLikes.textContent = res.likes.length;
+                    })
+                }
+            }).catch(err => console.log(err))
+        } else{
+            this._addLikeApi(this._id).then(res =>{
+                if (res.ok){
+                    this._btnLike.classList.add('elements__btn-like_active');
+                    res.json().then(res =>{
+                        this._amountLikes.textContent = res.likes.length;
+                    })
+                }
+            }).catch(err => console.log(err))
+        }
     }
 
     _removeCard(){
+            this._openPopupDeleteCard(this._id);
+    }
+
+    getId(){
+        return this._id;
+    }
+
+    removeTemplate(){
         this._element.remove();
     }
 
@@ -41,7 +76,19 @@ export default class Card{
         this._img.src = this._src;
         this._element.querySelector(".elements__item-title").textContent = this._name;
         this._img.alt = this._name;
+        this._amountLikes =  this._element.querySelector('.elements__amount-likes');
+        this._amountLikes.textContent = this._likes.length;
         this._setEventListeners();
+        this._getInfoAboutAuthor().then(res => res.json().then(res => {
+            if (res._id !== this._owner._id){
+                this._element.querySelector('.elements__trash').classList.add('elements__trash_noactive');
+            }
+            this._likes.forEach(like =>{
+                if (like._id === res._id){
+                    this._btnLike.classList.add('elements__btn-like_active');
+                }
+            })}
+        ))
         return this._element;
     }
 }

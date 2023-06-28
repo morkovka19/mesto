@@ -1,29 +1,3 @@
-export const initialCards = [
-    {
-      name: "Архыз",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-    },
-    {
-      name: "Челябинская область",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-    },
-    {
-      name: "Иваново",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-    },
-    {
-      name: "Камчатка",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-    },
-    {
-      name: "Холмогорский район",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-    },
-    {
-      name: "Байкал",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-    },
-  ]
 
 export const configFormSelector = {
   formSelector: '.popup__form',
@@ -45,3 +19,7 @@ export const inputNewCardHref = document.querySelector('#popup-new-card').queryS
 export const nameAuthor = document.querySelector('.profile__title');
 export const infoAuthor = document.querySelector('.profile__subtitle');
 export const avatarAuthor = document.querySelector('.profile__avatar');
+export const formDelete = document.querySelector('#popup-delete-card').querySelector(configFormSelector.formSelector);
+export const cards = [];
+export const avatarAuthorIconEdid = document.querySelector('.profile__block-pen');
+export const formEditAvatar = document.querySelector('#popup-edit-avatar').querySelector(configFormSelector.formSelector);
