@@ -96,7 +96,7 @@ function createNewCard(inputValues) {
 
 //редактирование аватара
 function editAvatar(avatar){
-  api.editAvatar(avatar['info-img']).then(res =>{
+  api.editAvatar(avatar['info-img-link']).then(res =>{
     if (res.ok){
       res.json().then(res =>{
         console.log(res)
