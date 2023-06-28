@@ -489,6 +489,7 @@ template {
     object-fit: cover;
 }
 
+
 .profile__block-author{
     margin: 0;
     padding: 0;
@@ -497,6 +498,7 @@ template {
     justify-content: space-between;
     align-items: center;
     gap: 30px;
+    position: relative;
 }
 
 @media screen and (max-width: 768px){
@@ -513,6 +515,7 @@ template {
     justify-content: space-between;
     align-items: center;
     gap: 30px;
+    position: relative;
 }
 
 @media screen and (max-width: 768px){
@@ -616,6 +619,7 @@ template {
 .elements__group{
     padding: 0;
     display: grid;
+    flex-wrap: wrap;
     grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));
     column-gap: 17px;
     width: 100%;
@@ -1142,6 +1146,47 @@ template {
     flex-direction: column;
     
 }
+.elements__trash_noactive{
+    display: none;
+}
+.popup__form_position_card-delete{
+    margin-top: 35px;
+}
+.popup__container_position_card-delete{
+    min-height: 180px; 
+}
+.profile__icon-pen{
+    margin: auto;
+    display: none;
+}
+
+@media screen and (max-width: 770px){
+    .profile__icon-pen{
+        left: 45%;
+        top: 20%;
+    }
+}
+.profile__block-pen{
+    margin: 0;
+    padding: 0;
+    background: rgba(0, 0, 0, 0.0);
+    position: absolute;
+    min-width: 120px;
+    min-height: 120px;
+    border: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.profile__block-pen:hover{
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.profile__block-pen:hover .profile__icon-pen{
+    display: block;
+}
+
+
 
 
 
