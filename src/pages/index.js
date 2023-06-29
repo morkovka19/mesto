@@ -60,7 +60,7 @@ editAvatarFormValodator.enableValidation();
 
 //создание крточки 
 function createCard(data){
-  const card = new Card(data, '#card', openPopupCard, getInfoAboutAuthor, deleteLike, addLike, openPopupDeleteCard);
+  const card = new Card(data, '#card', openPopupCard, getUserInfo, openPopupDeleteCard, setLikes);
   cards.push(card);
   cardGroup.addItem(card.generateCard());
 }
@@ -126,8 +126,8 @@ function openPopupDeleteCard(id){
 }
 
 //получение информации об авторе 
-function getInfoAboutAuthor(){
-  return api.getInfoAboutAuthor();
+function getUserInfo(){
+  return api.getUserInfo();
 }
 
 //удаление лайка
@@ -177,7 +177,7 @@ api.getInitialsCard().then((res)=>{
 });
 
 //запрашиваем имя и информацию о пользователе 
-api.getInfoAboutAuthor().then((res)=>{
+api.getUserInfo().then((res)=>{
   if (res.ok){
     res.json().then((res)=>{
       nameAuthor.textContent = res.name;
@@ -186,6 +186,27 @@ api.getInfoAboutAuthor().then((res)=>{
     })
   }
 }).catch((err) => console.log(err));
+
+
+function setLikes(card, likeStatus){
+  if (likeStatus){
+    api.deleteLike(card.getId()).then(res =>{
+      if (res.ok){
+        res.json().then(res =>{
+          card.updateLikes(res.likes.length);
+        })
+      }
+    }).catch(err => console.log(err));
+  } else{
+    api.addLike(card.getId()).then(res =>{
+      if (res.ok){
+        res.json().then(res =>{
+          card.updateLikes(res.likes.length);
+        })
+      }
+    }).catch(err => console.log(err));
+  }
+}
 
 
 

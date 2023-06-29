@@ -1,7 +1,7 @@
 import {api} from '../../pages/index.js'
 
 export default class Card{
-    constructor(data, templateSelector, handleCardClick, getInfoAboutAuthor, deleteLike, addLike, openPopupDeleteCard){
+    constructor(data, templateSelector, handleCardClick, getUserInfo, openPopupDeleteCard, setLikes){
         this._name = data.name;
         this._src  = data.link;
         this._likes = data.likes;
@@ -9,10 +9,9 @@ export default class Card{
         this._handleCardClick = handleCardClick;
         this._id = data._id;
         this._owner = data.owner;
-        this._getInfoAboutAuthor = getInfoAboutAuthor;
-        this._addLikeApi = addLike;
-        this._deleteLikeApi = deleteLike;
+        this._getUserInfo = getUserInfo;
         this._openPopupDeleteCard = openPopupDeleteCard;
+        this._setLikes = setLikes;
     }
 
     _getTemplate(){
@@ -20,26 +19,14 @@ export default class Card{
         return cardElement;
     }
 
+
     _addLike(){
-        if (this._btnLike.classList.contains('elements__btn-like_active')){
-            this._deleteLikeApi(this._id).then(res =>{
-                if (res.ok){
-                    this._btnLike.classList.remove('elements__btn-like_active');
-                    res.json().then(res =>{
-                        this._amountLikes.textContent = res.likes.length;
-                    })
-                }
-            }).catch(err => console.log(err))
-        } else{
-            this._addLikeApi(this._id).then(res =>{
-                if (res.ok){
-                    this._btnLike.classList.add('elements__btn-like_active');
-                    res.json().then(res =>{
-                        this._amountLikes.textContent = res.likes.length;
-                    })
-                }
-            }).catch(err => console.log(err))
-        }
+        this._setLikes(this, this._btnLike.classList.contains('elements__btn-like_active'));
+    }
+
+    updateLikes(amountLikes){
+        this._btnLike.classList.toggle('elements__btn-like_active');
+        this._amountLikes.textContent = amountLikes;
     }
 
     _removeCard(){
@@ -79,7 +66,7 @@ export default class Card{
         this._amountLikes =  this._element.querySelector('.elements__amount-likes');
         this._amountLikes.textContent = this._likes.length;
         this._setEventListeners();
-        this._getInfoAboutAuthor().then(res => res.json().then(res => {
+        this._getUserInfo().then(res => res.json().then(res => {
             if (res._id !== this._owner._id){
                 this._element.querySelector('.elements__trash').classList.add('elements__trash_noactive');
             }

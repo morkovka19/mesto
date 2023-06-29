@@ -12,7 +12,7 @@ export default class Api{
         })
     }
 
-    getInfoAboutAuthor(){
+    getUserInfo(){
         return fetch(`https://mesto.nomoreparties.co/v1/${this._cahort}/users/me`, {
             headers: {
                 authorization: this._id,

@@ -10,5 +10,5 @@ const presets = [
       useBuiltIns: "entry"
     }]
   ];
-  
-  module.exports = { presets }; 
+
+module.exports = { presets }; 
