@@ -73,10 +73,15 @@ function appendCardToSection(data){
 
 //создание новой карточки после добавления 
 function createNewCard(inputValues) {
-  api.addNewCard({nameNew: inputValues['name-img'], linkNew: inputValues['info-img']}).then(info => {
+  api.addNewCard({nameNew: inputValues['name-img'], linkNew: inputValues['info-img']})
+  .then(info => {
         addCardToSection(info);
         popupWithNewCard.close();
-    }).catch(err => console.log(err));
+    })
+  .catch(err => console.log(err))
+  .finally(()=>{
+    formCreateNewCard.querySelector('.popup__submit').textContent = 'Сохранить';
+  });
   formCreateNewCard.querySelector('.popup__submit').textContent = 'Сохранение...';
 }
 
@@ -93,52 +98,66 @@ function openPopupDeleteCard(card){
 
 //сохранение редактирования информации 
 function savePopUpEdit({name, info}) {
-  api.editProfile({nameNew: name, aboutNew: info}).then(info => {
+  api.editProfile({nameNew: name, aboutNew: info})
+  .then(info => {
         userInfo.setUserInfo({ name: info.name, info: info.about });
         popupWithFormEdit.close();
-    }).catch(err => console.log(err))
+    })
+  .catch(err => console.log(err))
+  .finally(()=>{
+    formEdit.querySelector('.popup__submit').textContent = 'Сохранить';
+  })
   formEdit.querySelector('.popup__submit').textContent = 'Сохранение...';
 }
 
 //редактирование аватара
 function editAvatar(avatar){
-  api.editAvatar(avatar['info-img-link']).then(res =>{
+  api.editAvatar(avatar['info-img-link'])
+  .then(res =>{
         userInfo.setUserAvatar(res.avatar);
         popupWithEditAvatar.close();
-      }).catch(err => console.log(err));
+      })
+    .catch(err => console.log(err))
+    .finally(()=>{
+      formEditAvatar.querySelector('.popup__submit').textContent = 'Сохранить';
+    });
   formEditAvatar.querySelector('.popup__submit').textContent = 'Сохранение...';
 }
 
 //удаление карточки
 function deleteCard(card){
-  api.deleteCard(card.getId()).then(res => {
+  api.deleteCard(card.getId())
+    .then(res => {
           card.removeTemplate();
           popupWithDeleteCard.close();
-      }).catch(err => console.log(err));
+      })
+    .catch(err => console.log(err));
 }
 
 //установка лайка на карточку
 function setLikes(card, likeStatus){
   if (likeStatus){
-    api.deleteLike(card.getId()).then(res =>{
+    api.deleteLike(card.getId())
+    .then(res =>{
           card.updateLikes(res.likes.length);
-        }).catch(err => console.log(err));
+        })
+    .catch(err => console.log(err));
   } else{
-    api.addLike(card.getId()).then(res =>{
+    api.addLike(card.getId())
+    .then(res =>{
           card.updateLikes(res.likes.length);
-        }).catch(err => console.log(err));
+        })
+    .catch(err => console.log(err));
   }
 }
 
 //сдушатели событий на кнопки для открытия попапов с формами 
 buttonAddNewCard.addEventListener('click', ()=>{
   addCardFormValidator.disableSubmitButton();
-  formCreateNewCard.querySelector('.popup__submit').textContent = 'Сохранить';
   popupWithNewCard.open();
 });
 
 buttonOpenFormEdit.addEventListener('click', ()=>{
-  formEdit.querySelector('.popup__submit').textContent = 'Сохранить';
   popupWithFormEdit.open();
   const userInfoFromPage = userInfo.getUserInfo();
   inputInfo.value = userInfoFromPage.info;
@@ -146,7 +165,6 @@ buttonOpenFormEdit.addEventListener('click', ()=>{
 })
 
 avatarAuthorIconEdid.addEventListener('click', ()=>{
-  formEditAvatar.querySelector('.popup__submit').textContent = 'Сохранить';
   popupWithEditAvatar.open();
 })
 
@@ -170,21 +188,9 @@ Promise.all([
   api.getUserInfo(),
   api.getInitialsCard()
   ])
-  .then(values =>{
-      addUserInfo(values[0]);
-      addInitialsCards(values[1]);
-  }).catch(err => console.log(err));
-
-
-
-
-
-
-
-
-
-
-
-
-
+  .then(([userInfo, cards]) =>{
+      addUserInfo(userInfo);
+      addInitialsCards(cards);
+  })
+  .catch(err => console.log(err));
 

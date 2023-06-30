@@ -1,7 +1,7 @@
 import {api} from '../../pages/index.js'
 
 export default class Card{
-    constructor(data, templateSelector, handleCardClick, openPopupDeleteCard, setLikes, userId){
+    constructor(data, templateSelector, handleCardClick, handleTrashClick, setLikes, userId){
         this._name = data.name;
         this._src  = data.link;
         this._likes = data.likes;
@@ -9,7 +9,7 @@ export default class Card{
         this._handleCardClick = handleCardClick;
         this._id = data._id;
         this._owner = data.owner;
-        this._openPopupDeleteCard = openPopupDeleteCard;
+        this._handleTrashClick = handleTrashClick;
         this._setLikes = setLikes;
         this._userId = userId;
     }
@@ -19,8 +19,9 @@ export default class Card{
         return cardElement;
     }
 
-    _addLike(){
-        this._setLikes(this, this._btnLike.classList.contains('elements__btn-like_active'));
+    _handleLikeClick(){
+        const isLiked = this._btnLike.classList.contains('elements__btn-like_active');
+        this._setLikes(this, isLiked);
     }
 
     updateLikes(amountLikes){
@@ -29,7 +30,7 @@ export default class Card{
     }
 
     _removeCard(){
-            this._openPopupDeleteCard(this);
+            this._handleTrashClick(this);
     }
 
     getId(){
@@ -47,7 +48,7 @@ export default class Card{
         
 
         this._btnLike.addEventListener('click', ()=>{
-            this._addLike();
+            this._handleLikeClick();
         })
 
         this._element.querySelector('.elements__trash').addEventListener('click', ()=>{
