@@ -9,7 +9,7 @@ export default class Api{
             headers: {
                 authorization: this._id,
             }
-        })
+        }).then(res => this._getResponseDate(res));
     }
 
     getUserInfo(){
@@ -17,7 +17,7 @@ export default class Api{
             headers: {
                 authorization: this._id,
             }
-        })
+        }).then(res => this._getResponseDate(res));
     }
 
     editProfile({nameNew, aboutNew}){
@@ -32,7 +32,7 @@ export default class Api{
                 about: aboutNew
             })
             
-        })
+        }).then(res => this._getResponseDate(res));
     }
 
     addNewCard({nameNew, linkNew}){
@@ -46,7 +46,7 @@ export default class Api{
                 name: nameNew,
                 link: linkNew
             })
-        })
+        }).then(res => this._getResponseDate(res));
     }
 
     addLike(id){
@@ -55,7 +55,7 @@ export default class Api{
             headers: {
                 authorization: this._id,
             }
-        })
+        }).then(res => this._getResponseDate(res));
     }
 
     deleteLike(id){
@@ -64,7 +64,7 @@ export default class Api{
             headers: {
                 authorization: this._id,
             }
-        })
+        }).then(res => this._getResponseDate(res));
     }
 
     deleteCard(id){
@@ -73,11 +73,10 @@ export default class Api{
             headers: {
                 authorization: this._id,
             }
-        })
+        }).then(res => this._getResponseDate(res));
     }
 
     editAvatar(avatar){
-        console.log(avatar);
         return fetch(`https://mesto.nomoreparties.co/v1/${this._cahort}/users/me/avatar`, {
             method: 'PATCH',
             headers: {
@@ -87,6 +86,13 @@ export default class Api{
             body: JSON.stringify({
                 avatar: avatar
             })
-        })
+        }).then(res => this._getResponseDate(res));
+    }
+
+    _getResponseDate(res){
+        if (!res.ok){
+            return Promise.reject(`Ошибка: ${res.status}`);
+        }
+        return res.json();
     }
 }

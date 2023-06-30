@@ -1,7 +1,7 @@
 import {api} from '../../pages/index.js'
 
 export default class Card{
-    constructor(data, templateSelector, handleCardClick, getUserInfo, openPopupDeleteCard, setLikes){
+    constructor(data, templateSelector, handleCardClick, openPopupDeleteCard, setLikes, userId){
         this._name = data.name;
         this._src  = data.link;
         this._likes = data.likes;
@@ -9,16 +9,15 @@ export default class Card{
         this._handleCardClick = handleCardClick;
         this._id = data._id;
         this._owner = data.owner;
-        this._getUserInfo = getUserInfo;
         this._openPopupDeleteCard = openPopupDeleteCard;
         this._setLikes = setLikes;
+        this._userId = userId;
     }
 
     _getTemplate(){
         const cardElement = document.querySelector(this._templateSelector).content.querySelector('.elements__item').cloneNode(true);
         return cardElement;
     }
-
 
     _addLike(){
         this._setLikes(this, this._btnLike.classList.contains('elements__btn-like_active'));
@@ -30,7 +29,7 @@ export default class Card{
     }
 
     _removeCard(){
-            this._openPopupDeleteCard(this._id);
+            this._openPopupDeleteCard(this);
     }
 
     getId(){
@@ -66,16 +65,14 @@ export default class Card{
         this._amountLikes =  this._element.querySelector('.elements__amount-likes');
         this._amountLikes.textContent = this._likes.length;
         this._setEventListeners();
-        this._getUserInfo().then(res => res.json().then(res => {
-            if (res._id !== this._owner._id){
-                this._element.querySelector('.elements__trash').classList.add('elements__trash_noactive');
+        if (this._userId !== this._owner._id){
+            this._element.querySelector('.elements__trash').classList.add('elements__trash_noactive');
+        }
+        this._likes.forEach(like =>{
+            if (like._id === this._userId){
+                this._btnLike.classList.add('elements__btn-like_active');
             }
-            this._likes.forEach(like =>{
-                if (like._id === res._id){
-                    this._btnLike.classList.add('elements__btn-like_active');
-                }
-            })}
-        ))
+        })
         return this._element;
     }
 }
